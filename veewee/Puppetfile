@@ -1,0 +1,15 @@
+mod "stdlib",
+  :git => "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+
+mod "apt",
+  :git => "git://github.com/puppetlabs/puppetlabs-apt.git"
+
+mod "virtualbox",
+  :git => "git@github.com:signed/puppet-virtualbox.git",
+  :ref => "anchor-for-repo"
+
+mod "rbenv",
+  : git = "https://github.com/alup/puppet-rbenv.git"
+
+mod "vcsrepo",
+  : git = "git clone https://github.com/puppetlabs/puppetlabs-vcsrepo.git"
