@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
+
+  config.vm.network :forwarded_port, host: 17124, guest: 17124
+
+  config.vm.synced_folder "environment", "/agora"
+
+  config.vm.provider :virtualbox do |vb|
+    vb.gui = false
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
+  # cachier plugin for vagrant https://github.com/fgrehm/vagrant-cachier
+  config.cache.auto_detect = true
+
+  config.vm.provision :shell, :path => "shell/add-puppet-labs-repository.sh"
+  config.vm.provision :shell, :path => "shell/install-puppet.sh"
+
+  config.vm.provision :puppet do |puppet|
+    puppet.module_path = ["puppet/modules/", "puppet/modules-dev"]
+    puppet.manifests_path = "puppet/manifests"
+    puppet.manifest_file = "site.pp"
+    puppet.options = "--verbose --debug"
+  end
+end

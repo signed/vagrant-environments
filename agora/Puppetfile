@@ -1,0 +1,15 @@
+mod "stdlib",
+  :git => "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+
+mod "apt",
+  :git => "git://github.com/puppetlabs/puppetlabs-apt.git"
+
+mod "vcsrepo",
+  :git = "git clone https://github.com/puppetlabs/puppetlabs-vcsrepo.git"
+
+mod "nodejs",
+  :git => "git@github.com:signed/puppetlabs-nodejs.git",
+  :ref => 'support-0.8-x-releases'
+
+mod "mongodb",
+  :git = "https://github.com/puppetlabs/puppetlabs-mongodb.git"
