@@ -4,6 +4,4 @@
 *.ipr
 *.iws
 .idea/
-oracle-xe/
-devbox/
 *.iso
