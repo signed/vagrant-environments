@@ -35,6 +35,6 @@ node default {
   jboss::instance { 'strom':
     createuser => false, # Default user jboss is already created by jboss class
     bindaddr    => '0.0.0.0',
-    port        => '8082',
+    port        => '8080', # Configuration gets ignored, it will always be 8080
   }
 }
