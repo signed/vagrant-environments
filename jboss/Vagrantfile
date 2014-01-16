@@ -2,11 +2,14 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+
   config.vm.box = "precise64-latest"
+  #config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # cachier plugin for vagrant
   config.cache.auto_detect = true
   #config.cache.enable_nfs  = true
+  config.vm.network "public_network"
 
   config.vm.provision :shell, :path => "shell/add-puppet-labs-repository.sh"
 
