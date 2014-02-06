@@ -11,6 +11,10 @@ Vagrant.configure("2") do |config|
   #config.cache.enable_nfs  = true
   config.vm.network "public_network"
 
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+  end
+
   config.vm.provision :shell, :path => "shell/add-puppet-labs-repository.sh"
 
   config.vm.provision :puppet do |puppet|

@@ -10,29 +10,28 @@ node default {
   }
 
   class{ 'java':
-    before => Class['jboss'],
+    before  => Class['jboss'],
     version => 'latest',
   }
 
   package{ "install puppet":
-    before => Class['jboss'],
-    name =>  'puppet',
-    ensure=>latest,
+    before  => Class['jboss'],
+    name    => 'puppet',
+    ensure  => latest,
   }
 
   package{ "install unzip":
     before => Class['jboss'],
-    name => 'unzip',
-    ensure=>latest,
+    name   => 'unzip',
+    ensure =>latest,
   }
-
 
   #change owner of extracted files
   class { 'jboss':
     install             => 'source',
     version             => '7',
     install_source      => 'http://192.168.9.138:8080/files/jboss/jboss-as-7.1.1.Final.zip',
-    disable  => '',
+    disable             => '',
   }
 
   jboss::instance { 'strom':
