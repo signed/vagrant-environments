@@ -3,8 +3,11 @@
 
 
 node default {
-  include apt
   include stdlib
+
+  class { 'apt':
+    always_apt_update    => true,
+  }
 
   class{ 'java':
     before => Class['jboss'],
@@ -27,14 +30,15 @@ node default {
   #change owner of extracted files
   class { 'jboss':
     install             => 'source',
-    version             => '6',
-    install_source      => 'http://192.168.9.138:8080/files/jboss/jboss-as-distribution-6.1.0.Final.zip',
+    version             => '7',
+    install_source      => 'http://192.168.9.138:8080/files/jboss/jboss-as-7.1.1.Final.zip',
     disable  => '',
   }
 
   jboss::instance { 'strom':
-    createuser => false, # Default user jboss is already created by jboss class
-    bindaddr    => '0.0.0.0',
-    port        => '8080', # Configuration gets ignored, it will always be 8080
+    createuser             => false, # Default user jboss is already created by jboss class
+    bindaddr               => '0.0.0.0',
+    bindaddr_admin_console => '0.0.0.0',
+    port                   => '8080', # Configuration gets ignored, it will always be 8080
   }
 }
