@@ -13,3 +13,7 @@ https://github.com/fgrehm/vagrant-cachier
 
 
 puppet apply --verbose --debug --modulepath '/etc/puppet/modules:/tmp/vagrant-puppet/modules-0:/tmp/vagrant-puppet/modules-1' site.pp --detailed-exitcodes
+
+# Still ToDo #
+## The init script for jboss 7 does not properly report the status of the running service ##
+http://stackoverflow.com/questions/6880902/start-jboss-7-as-a-service-on-linux
