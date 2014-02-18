@@ -39,5 +39,18 @@ node default {
     bindaddr               => '0.0.0.0',
     bindaddr_admin_console => '0.0.0.0',
     port                   => '8080', # Configuration gets ignored, it will always be 8080
+    conf_dir => "configuration/jboss",
   }
+
+#  file { 'add managment user':
+#    require => Jboss::Instance['strom'],
+#    name => '/tmp/mgmt-users.properties',
+#    source => 'puppet:///modules/configuration/jboss/mgmt-users.properties',
+#    mode => "0600",
+#    owner => "jboss",
+#    group => "jboss",
+#  }
+
 }
+
+#puppet apply --verbose --debug --modulepath '/etc/puppet/modules:/tmp/vagrant-puppet-1/modules-0:/tmp/vagrant-puppet-1/modules-1' --manifestdir /tmp/vagrant-puppet-1/manifests --detailed-exitcodes /tmp/vagrant-puppet-1/manifests/site.pp
