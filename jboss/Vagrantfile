@@ -11,6 +11,8 @@ Vagrant.configure("2") do |config|
   #config.cache.enable_nfs  = true
   config.vm.network "public_network"
 
+  config.vm.hostname = 'jboss-puppet'
+
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
   end
